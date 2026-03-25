@@ -1,6 +1,14 @@
+import emergencyImg from '@/assets/services/emergency.jpg';
+import sewerImg from '@/assets/services/sewer-drain.jpg';
+import waterImg from '@/assets/services/water-pipes.jpg';
+import fixturesImg from '@/assets/services/fixtures.jpg';
+import remodelingImg from '@/assets/services/remodeling.jpg';
+
 const serviceGroups = [
   {
     title: '🔴 Emergency Services',
+    image: emergencyImg,
+    imageAlt: 'Emergency plumber repairing a burst pipe',
     services: [
       { name: 'Gas Leak Detection & Repair', desc: 'Immediate response for dangerous gas leaks to keep your family safe.', icon: '🔥' },
       { name: 'Frozen Pipe Repair', desc: 'Fast thawing and repair to prevent pipe bursts during Chicago winters.', icon: '❄️' },
@@ -9,6 +17,8 @@ const serviceGroups = [
   },
   {
     title: '🔵 Sewer & Drain',
+    image: sewerImg,
+    imageAlt: 'Professional sewer drain cleaning equipment inside a pipe',
     services: [
       { name: 'Drain Cleaning & Power Rodding', desc: 'Industrial-grade rodding to clear even the toughest clogs.', icon: '🔧' },
       { name: 'Video Camera Sewer Inspection', desc: 'High-tech camera inspection to pinpoint issues without digging.', icon: '📹' },
@@ -21,6 +31,8 @@ const serviceGroups = [
   },
   {
     title: '💧 Water & Pipes',
+    image: waterImg,
+    imageAlt: 'Copper and PVC water pipes installation',
     services: [
       { name: 'Underground Water Main Repair & Installation', desc: 'Full water main service from repair to complete new installations.', icon: '💧' },
       { name: 'Water Pressure Boost', desc: 'Restore strong water pressure throughout your home or building.', icon: '📈' },
@@ -30,6 +42,8 @@ const serviceGroups = [
   },
   {
     title: '🔧 Fixtures & Water Heaters',
+    image: fixturesImg,
+    imageAlt: 'Tankless water heater being installed on wall',
     services: [
       { name: 'Faucet Repair & Replacement', desc: 'Fix leaky faucets or upgrade to modern, efficient fixtures.', icon: '🚰' },
       { name: 'Toilet Repair & Replacement', desc: 'From running toilets to full replacements — quick and clean.', icon: '🚽' },
@@ -40,6 +54,8 @@ const serviceGroups = [
   },
   {
     title: '🏗️ Remodeling & Other',
+    image: remodelingImg,
+    imageAlt: 'Modern kitchen with new plumbing fixtures and faucet',
     services: [
       { name: 'Kitchen Remodeling (Plumbing)', desc: 'Complete plumbing for kitchen renovations — gas, water, and drain.', icon: '🍳' },
       { name: 'Bathroom Remodeling (Plumbing)', desc: 'Expert bathroom plumbing for tubs, showers, vanities, and more.', icon: '🛁' },
@@ -67,10 +83,25 @@ const ServicesSection = () => (
       </div>
 
       {serviceGroups.map((group) => (
-        <div key={group.title} className="mb-12">
-          <h3 className="font-heading font-semibold text-xl md:text-[22px] text-foreground mb-6">
-            {group.title}
-          </h3>
+        <div key={group.title} className="mb-16">
+          {/* Category banner with image */}
+          <div className="relative rounded-xl overflow-hidden mb-6 h-48 md:h-56">
+            <img
+              src={group.image}
+              alt={group.imageAlt}
+              loading="lazy"
+              width={640}
+              height={512}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-primary/70" />
+            <div className="absolute inset-0 flex items-center px-6 md:px-10">
+              <h3 className="font-heading font-bold text-2xl md:text-3xl text-primary-foreground drop-shadow-lg">
+                {group.title}
+              </h3>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {group.services.map((s) => (
               <div
