@@ -1,0 +1,120 @@
+import { useState, useEffect } from 'react';
+import Logo from './Logo';
+
+const navLinks = [
+  { label: 'Home', href: '#home' },
+  { label: 'Services', href: '#services' },
+  { label: 'About', href: '#about' },
+  { label: 'Reviews', href: '#reviews' },
+  { label: 'Contact', href: '#contact' },
+];
+
+const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    const sections = document.querySelectorAll('section[id]');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-80px 0px -60% 0px' }
+    );
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <header
+      id="top"
+      className={`fixed top-0 left-0 right-0 z-50 bg-primary transition-shadow ${scrolled ? 'shadow-lg' : ''}`}
+    >
+      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16 md:h-20">
+        <Logo light />
+
+        {/* Desktop nav */}
+        <nav className="hidden md:flex items-center gap-6">
+          {navLinks.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              className={`text-sm font-heading font-semibold uppercase tracking-wide transition-colors ${
+                activeSection === l.href.slice(1)
+                  ? 'text-orange'
+                  : 'text-primary-foreground/80 hover:text-orange'
+              }`}
+            >
+              {l.label}
+            </a>
+          ))}
+        </nav>
+
+        {/* Phone + CTA */}
+        <div className="hidden md:flex items-center gap-4">
+          <a href="tel:7736192730" className="text-orange font-heading font-bold text-lg">
+            (773) 619-2730
+          </a>
+          <a
+            href="tel:7736192730"
+            className="bg-orange text-accent-foreground font-heading font-bold text-sm uppercase px-5 py-2.5 rounded-md hover:brightness-110 transition"
+          >
+            Call Now
+          </a>
+        </div>
+
+        {/* Mobile hamburger */}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="md:hidden text-primary-foreground p-2"
+          aria-label="Toggle menu"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            {menuOpen ? (
+              <path d="M6 6l12 12M6 18L18 6" />
+            ) : (
+              <path d="M3 6h18M3 12h18M3 18h18" />
+            )}
+          </svg>
+        </button>
+      </div>
+
+      {/* Mobile menu */}
+      {menuOpen && (
+        <nav className="md:hidden bg-primary border-t border-primary-foreground/10 pb-4">
+          {navLinks.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={() => setMenuOpen(false)}
+              className="block px-6 py-3 text-primary-foreground font-heading font-semibold uppercase text-sm hover:text-orange"
+            >
+              {l.label}
+            </a>
+          ))}
+          <div className="px-6 pt-2">
+            <a
+              href="tel:7736192730"
+              className="block bg-orange text-accent-foreground text-center font-heading font-bold uppercase py-3 rounded-md"
+            >
+              📞 Call (773) 619-2730
+            </a>
+          </div>
+        </nav>
+      )}
+    </header>
+  );
+};
+
+export default Header;
