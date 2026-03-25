@@ -1,15 +1,31 @@
+import heroImage from '@/assets/hero-plumber.jpg';
+
 const HeroSection = () => (
   <section
     id="home"
-    className="relative pt-20 md:pt-24 pb-16 md:pb-24 bg-primary overflow-hidden"
-    style={{
-      backgroundImage: `radial-gradient(circle at 20% 50%, hsl(var(--navy-dark)) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, hsl(var(--navy)) 0%, transparent 40%),
-        repeating-linear-gradient(0deg, transparent, transparent 40px, hsl(0 0% 100% / 0.02) 40px, hsl(0 0% 100% / 0.02) 41px),
-        repeating-linear-gradient(90deg, transparent, transparent 40px, hsl(0 0% 100% / 0.02) 40px, hsl(0 0% 100% / 0.02) 41px)`,
-    }}
+    className="relative pt-16 md:pt-20 overflow-hidden"
   >
-    <div className="max-w-7xl mx-auto px-4 text-center">
+    {/* Background image with overlay */}
+    <div className="absolute inset-0">
+      <img
+        src={heroImage}
+        alt="Professional plumber working on kitchen pipes"
+        className="w-full h-full object-cover"
+        width={1920}
+        height={1080}
+      />
+      <div className="absolute inset-0 bg-primary/85" />
+      {/* Blueprint grid texture */}
+      <div
+        className="absolute inset-0 opacity-[0.04]"
+        style={{
+          backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 40px, white 40px, white 41px),
+            repeating-linear-gradient(90deg, transparent, transparent 40px, white 40px, white 41px)`,
+        }}
+      />
+    </div>
+
+    <div className="relative max-w-7xl mx-auto px-4 py-16 md:py-28 text-center">
       <h1 className="font-heading font-bold text-3xl md:text-5xl lg:text-[48px] text-primary-foreground leading-tight mb-6 animate-fade-in-up">
         Chicago's Trusted Plumbers — Over 50 Years of Reliable Service
       </h1>
