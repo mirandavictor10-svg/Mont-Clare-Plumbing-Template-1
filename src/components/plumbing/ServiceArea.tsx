@@ -24,10 +24,10 @@ const ServiceArea = () => (
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-10 items-start">
+      <div className="grid md:grid-cols-2 gap-10 items-stretch">
 
         {/* Map Card */}
-        <div className="rounded-xl overflow-hidden shadow-lg border-2 border-primary">
+        <div className="rounded-xl overflow-hidden shadow-lg border-2 border-primary flex flex-col">
           {/* Map header bar */}
           <div className="bg-primary px-4 py-3 flex items-center gap-3">
             <svg
@@ -56,7 +56,8 @@ const ServiceArea = () => (
           <iframe
             src="https://maps.google.com/maps?q=7253+S.+Green+St,+Chicago,+IL+60621&hl=en&z=14&output=embed"
             width="100%"
-            height="320"
+            height="100%"
+            className="flex-1 min-h-[320px]"
             style={{ border: 0, display: 'block' }}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
