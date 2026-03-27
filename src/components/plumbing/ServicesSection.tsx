@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import emergencyImg from '@/assets/services/emergency.jpg';
 import sewerImg from '@/assets/services/sewer-drain.jpg';
@@ -109,8 +109,50 @@ const serviceGroups = [
   },
 ];
 
+// Hook: observe a grid container and stagger-reveal its card children
+function useScrollRevealGrid(groupCount: number) {
+  const refs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+
+    refs.current.forEach((grid) => {
+      if (!grid) return;
+      const cards = Array.from(grid.querySelectorAll<HTMLElement>('.service-card'));
+      // Start hidden
+      cards.forEach((card) => card.classList.add('card-hidden'));
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              cards.forEach((card, i) => {
+                setTimeout(() => {
+                  card.classList.remove('card-hidden');
+                  card.classList.add('card-visible');
+                }, i * 80);
+              });
+              observer.disconnect();
+            }
+          });
+        },
+        { threshold: 0.08 }
+      );
+
+      observer.observe(grid);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [groupCount]);
+
+  return refs;
+}
+
 const ServicesSection = () => {
   const [selectedService, setSelectedService] = useState<Service | null>(null);
+  const gridRefs = useScrollRevealGrid(serviceGroups.length);
 
   return (
     <section id="services" className="py-16 md:py-24 bg-background">
@@ -125,7 +167,7 @@ const ServicesSection = () => {
           </p>
         </div>
 
-        {serviceGroups.map((group) => (
+        {serviceGroups.map((group, groupIdx) => (
           <div key={group.title} className="mb-16">
             <div className="relative rounded-xl overflow-hidden mb-6 h-48 md:h-56">
               <img
@@ -144,12 +186,15 @@ const ServicesSection = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div
+              ref={(el) => { gridRefs.current[groupIdx] = el; }}
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+            >
               {group.services.map((s) => (
                 <button
                   key={s.name}
                   onClick={() => setSelectedService(s)}
-                  className="group bg-card border border-border rounded-lg p-5 hover:bg-primary hover:border-primary transition-all duration-300 cursor-pointer text-left"
+                  className="service-card group bg-card border border-border rounded-lg p-5 hover:bg-primary hover:border-primary transition-all duration-300 cursor-pointer text-left"
                 >
                   <div className="text-2xl mb-2">{s.icon}</div>
                   <h4 className="font-heading font-bold text-foreground group-hover:text-primary-foreground transition-colors mb-1">

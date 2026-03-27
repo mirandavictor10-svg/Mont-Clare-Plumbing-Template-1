@@ -72,28 +72,60 @@
   }
 }
 
+/* ── CTA button pulse ── */
 @keyframes pulse-glow {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.85; transform: scale(1.05); }
+  0%, 100% { box-shadow: 0 0 0 0 hsl(var(--orange) / 0.6); }
+  50% { box-shadow: 0 0 0 10px hsl(var(--orange) / 0); }
 }
 
 .animate-pulse-glow {
-  animation: pulse-glow 1.5s ease-in-out infinite;
+  animation: pulse-glow 2s ease-in-out infinite;
 }
 
+/* ── Fade-in-up (hero h1 already uses this) ── */
 @keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fade-in-up {
-  animation: fade-in-up 0.6s ease-out forwards;
+  opacity: 0;
+  animation: fade-in-up 0.65s ease-out forwards;
 }
 
-/* Respect user motion preferences */
+/* ── Stagger delay utilities for hero entrance ── */
+.animation-delay-100 { animation-delay: 100ms; }
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-300 { animation-delay: 300ms; }
+.animation-delay-400 { animation-delay: 400ms; }
+.animation-delay-500 { animation-delay: 500ms; }
+
+/* ── Scroll-triggered card reveal ── */
+@keyframes card-reveal {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card-hidden {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.card-visible {
+  animation: card-reveal 0.5s ease-out forwards;
+}
+
+/* ── Respect user motion preferences ── */
 @media (prefers-reduced-motion: reduce) {
   .animate-pulse-glow,
-  .animate-fade-in-up {
+  .animate-fade-in-up,
+  .card-visible {
     animation: none;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .card-hidden {
+    opacity: 1;
+    transform: none;
   }
 }
