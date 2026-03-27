@@ -1,5 +1,30 @@
-const stats = [
-  { value: '50+', label: 'Years in Business' },
+import { useCountUp } from '@/hooks/useCountUp';
+
+interface StatCardProps {
+  value: string;
+  label: string;
+  numeric?: number;
+  suffix?: string;
+}
+
+const StatCard = ({ value, label, numeric, suffix = '' }: StatCardProps) => {
+  const { count, ref } = useCountUp({ target: numeric ?? 0, duration: 1600 });
+
+  return (
+    <div
+      ref={ref}
+      className="bg-card border border-border rounded-lg p-6 text-center shadow-sm"
+    >
+      <div className="font-heading font-bold text-3xl text-orange mb-1">
+        {numeric !== undefined ? `${count}${suffix}` : value}
+      </div>
+      <div className="text-sm text-muted-foreground font-semibold">{label}</div>
+    </div>
+  );
+};
+
+const stats: StatCardProps[] = [
+  { value: '50+', label: 'Years in Business', numeric: 50, suffix: '+' },
   { value: 'Licensed', label: 'Bonded & Insured' },
   { value: 'All Types', label: 'Residential + Commercial' },
   { value: 'Free', label: 'Estimates Always' },
@@ -44,13 +69,7 @@ const WhyChooseUs = () => (
 
         <div className="grid grid-cols-2 gap-4">
           {stats.map((s) => (
-            <div
-              key={s.label}
-              className="bg-card border border-border rounded-lg p-6 text-center shadow-sm"
-            >
-              <div className="font-heading font-bold text-3xl text-orange mb-1">{s.value}</div>
-              <div className="text-sm text-muted-foreground font-semibold">{s.label}</div>
-            </div>
+            <StatCard key={s.label} value={s.value} label={s.label} numeric={s.numeric} suffix={s.suffix} />
           ))}
         </div>
       </div>

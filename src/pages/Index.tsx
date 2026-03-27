@@ -1,5 +1,6 @@
 import Header from '@/components/plumbing/Header';
 import HeroSection from '@/components/plumbing/HeroSection';
+import TrustStrip from '@/components/plumbing/TrustStrip';
 import UrgencyBanner from '@/components/plumbing/UrgencyBanner';
 import ServicesSection from '@/components/plumbing/ServicesSection';
 import WhyChooseUs from '@/components/plumbing/WhyChooseUs';
@@ -13,6 +14,7 @@ const Index = () => (
   <div className="pb-14 md:pb-0">
     <Header />
     <HeroSection />
+    <TrustStrip />
     <UrgencyBanner />
     <ServicesSection />
     <WhyChooseUs />
