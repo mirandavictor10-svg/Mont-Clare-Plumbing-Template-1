@@ -31,18 +31,8 @@ const stats: StatCardProps[] = [
 ];
 
 const WhyChooseUs = () => (
-  <section
-    id="about"
-    className="relative py-16 md:py-24 bg-cover bg-center bg-no-repeat"
-    style={{
-      backgroundImage:
-        'url(https://images.unsplash.com/photo-1694827893591-af9b80361599?auto=format&fit=crop&w=1920&q=80)',
-    }}
-  >
-    {/* Dark overlay */}
-    <div className="absolute inset-0 bg-primary/88" />
-
-    <div className="relative z-10 max-w-7xl mx-auto px-4">
+  <section id="about" className="py-16 md:py-24 bg-primary">
+    <div className="max-w-7xl mx-auto px-4">
       <h2 className="font-heading font-bold text-3xl md:text-4xl text-primary-foreground text-center mb-2">
         Why Chicago Trusts Zuniga's Plumbing
       </h2>
