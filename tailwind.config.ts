@@ -66,7 +66,7 @@ export default {
         },
       },
       fontFamily: {
-        heading: ['Montserrat', 'sans-serif'],
+        heading: ['Poppins', 'sans-serif'],
         body: ['Open Sans', 'sans-serif'],
       },
       borderRadius: {
