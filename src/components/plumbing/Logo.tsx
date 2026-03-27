@@ -15,7 +15,7 @@ export const Logo = ({ light = false, className = "" }: { light?: boolean; class
       <img
         src={light ? "/logo_light.png" : "/logo.png"}
         alt="Zuniga's Plumbing, Inc."
-        className="h-12 w-auto object-contain"
+        className="h-14 md:h-16 w-auto object-contain"
       />
     </div>
   );
