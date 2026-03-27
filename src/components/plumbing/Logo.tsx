@@ -13,7 +13,7 @@ export const Logo = ({ light = false, className = "" }: { light?: boolean; class
   return (
     <div className={`flex items-center gap-2 ${className}`}>
       <img
-        src={light ? "/logo_light.svg" : "/logo.png"}
+        src={light ? "/logo_light.png" : "/logo.png"}
         alt="Zuniga's Plumbing, Inc."
         className="h-12 w-auto object-contain"
       />
