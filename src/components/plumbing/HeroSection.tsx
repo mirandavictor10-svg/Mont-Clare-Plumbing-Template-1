@@ -26,7 +26,7 @@ const HeroSection = () => (
         />
         
         {/* Flow lines (water/cyan and gas/orange simulation) */}
-        <div className="absolute inset-0 opacity-20 hidden md:block">
+        <div className="absolute inset-0 opacity-20">
           {/* Horizontal flowing lines */}
           <div className="absolute top-[200px] left-0 w-full h-[1px] bg-cyan-400 animate-flow-horizontal" style={{ boxShadow: '0 0 8px 1px inset-cyan-400' }} />
           <div className="absolute top-[400px] left-0 w-full h-[1px] bg-orange-400 animate-flow-horizontal" style={{ animationDelay: '2s', boxShadow: '0 0 8px 1px inset-orange-400' }} />
