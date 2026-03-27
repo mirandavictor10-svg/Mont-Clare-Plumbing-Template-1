@@ -13,12 +13,12 @@ const StatCard = ({ value, label, numeric, suffix = '' }: StatCardProps) => {
   return (
     <div
       ref={ref}
-      className="bg-primary-foreground/5 border border-primary-foreground/10 rounded-lg p-6 text-center shadow-sm hover:bg-primary-foreground/10 transition-colors duration-300"
+      className="bg-white/10 border border-white/20 rounded-lg p-6 text-center shadow-md hover:bg-white/15 transition-colors duration-300"
     >
-      <div className="font-heading font-bold text-3xl text-orange mb-1">
+      <div className="font-heading font-bold text-3xl text-primary-foreground mb-1">
         {numeric !== undefined ? `${count}${suffix}` : value}
       </div>
-      <div className="text-sm text-primary-foreground/60 font-semibold">{label}</div>
+      <div className="text-sm text-primary-foreground/75 font-semibold">{label}</div>
     </div>
   );
 };
@@ -58,7 +58,7 @@ const WhyChooseUs = () => (
             {['BBB Accredited', 'Yelp Verified', 'Angi Certified'].map((badge) => (
               <span
                 key={badge}
-                className="bg-orange/10 border border-orange/50 text-orange px-4 py-2 rounded-md text-sm font-heading font-semibold flex items-center gap-2"
+                className="bg-orange/15 border border-orange text-orange px-4 py-2 rounded-md text-sm font-heading font-semibold flex items-center gap-2"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
                 {badge}
