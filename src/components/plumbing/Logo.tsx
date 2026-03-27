@@ -9,14 +9,17 @@ const PipeIcon = () => (
   </svg>
 );
 
-const Logo = ({ light = false }: { light?: boolean }) => (
-  <a href="#top" className="flex items-center gap-0">
-    <img 
-      src={light ? "/logo_light.svg" : "/logo.svg"} 
-      alt="Zuniga's Plumbing, Inc." 
-      className="h-10 md:h-12 w-auto object-contain"
-    />
-  </a>
-);
+export const Logo = ({ light = false, className = "" }: { light?: boolean; className?: string }) => {
+  return (
+    <div className={`flex items-center gap-2 ${className}`}>
+      <img 
+        src="/logo.png" 
+        alt="Zuniga's Plumbing, Inc." 
+        className="h-12 w-auto object-contain"
+        style={light ? { filter: 'brightness(0) invert(1)' } : { mixBlendMode: 'multiply' }}
+      />
+    </div>
+  );
+};
 
 export default Logo;
