@@ -34,7 +34,7 @@ const StatCard = ({ value, label, numeric, suffix = '', featured = false }: Stat
 };
 
 const stats: StatCardProps[] = [
-  { value: '50+', label: 'Years in Business', numeric: 50, suffix: '+', featured: true },
+  { value: '50+', label: 'Years in Business', numeric: 50, suffix: '+' },
   { value: 'Licensed', label: 'Bonded & Insured' },
   { value: 'All Types', label: 'Residential + Commercial' },
   { value: 'Free', label: 'Estimates Always' },
@@ -46,7 +46,7 @@ const WhyChooseUs = () => (
       <h2 className="font-heading font-bold text-3xl md:text-4xl text-primary-foreground text-center mb-2">
         Why Chicago Trusts Zuniga's Plumbing
       </h2>
-      <div className="w-16 h-1 bg-orange mx-auto mb-12" />
+      <div className="mb-12" />
 
       <div className="grid md:grid-cols-2 gap-12 items-start">
         <div className="space-y-6">
@@ -71,7 +71,7 @@ const WhyChooseUs = () => (
                 className="bg-white text-primary px-4 py-2 rounded-md text-sm font-heading font-semibold flex items-center gap-2 shadow-sm"
               >
                 {/* Option E — orange checkmark */}
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(24,86%,41%)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="hsl(24,86%,41%)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
                 {badge}
               </span>
             ))}
