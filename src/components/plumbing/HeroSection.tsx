@@ -16,13 +16,28 @@ const HeroSection = () => (
       />
       <div className="absolute inset-0 bg-primary/85" />
       {/* Blueprint grid texture */}
-      <div
-        className="absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 40px, white 40px, white 41px),
-            repeating-linear-gradient(90deg, transparent, transparent 40px, white 40px, white 41px)`,
-        }}
-      />
+      <div className="absolute inset-0 overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 40px, white 40px, white 41px),
+              repeating-linear-gradient(90deg, transparent, transparent 40px, white 40px, white 41px)`,
+          }}
+        />
+        
+        {/* Flow lines (water/cyan and gas/orange simulation) */}
+        <div className="absolute inset-0 opacity-20 hidden md:block">
+          {/* Horizontal flowing lines */}
+          <div className="absolute top-[200px] left-0 w-full h-[1px] bg-cyan-400 animate-flow-horizontal" style={{ boxShadow: '0 0 8px 1px inset-cyan-400' }} />
+          <div className="absolute top-[400px] left-0 w-full h-[1px] bg-orange-400 animate-flow-horizontal" style={{ animationDelay: '2s', boxShadow: '0 0 8px 1px inset-orange-400' }} />
+          <div className="absolute top-[600px] left-0 w-full h-[1px] bg-cyan-400 animate-flow-horizontal" style={{ animationDelay: '5s', boxShadow: '0 0 8px 1px inset-cyan-400' }} />
+          
+          {/* Vertical flowing lines */}
+          <div className="absolute top-0 left-[20%] w-[1px] h-full bg-cyan-400 animate-flow-vertical" style={{ animationDelay: '1s', boxShadow: '0 0 8px 1px inset-cyan-400' }} />
+          <div className="absolute top-0 left-[60%] w-[1px] h-full bg-orange-400 animate-flow-vertical" style={{ animationDelay: '4s', boxShadow: '0 0 8px 1px inset-orange-400' }} />
+          <div className="absolute top-0 left-[85%] w-[1px] h-full bg-cyan-400 animate-flow-vertical" style={{ animationDelay: '7s', boxShadow: '0 0 8px 1px inset-cyan-400' }} />
+        </div>
+      </div>
     </div>
 
     <div className="relative max-w-7xl mx-auto px-4 py-16 md:py-28 text-center">
