@@ -5,26 +5,36 @@ interface StatCardProps {
   label: string;
   numeric?: number;
   suffix?: string;
+  featured?: boolean;
 }
 
-const StatCard = ({ value, label, numeric, suffix = '' }: StatCardProps) => {
+const StatCard = ({ value, label, numeric, suffix = '', featured = false }: StatCardProps) => {
   const { count, ref } = useCountUp({ target: numeric ?? 0, duration: 1600 });
 
   return (
     <div
       ref={ref}
-      className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center shadow-md hover:bg-white/15 transition-colors duration-300"
+      className={`rounded-lg overflow-hidden shadow-md transition-colors duration-300 border ${
+        featured
+          ? 'bg-white/20 border-white/30 hover:bg-white/25'
+          : 'bg-white/10 border-white/20 hover:bg-white/15'
+      }`}
     >
-      <div className="font-heading font-bold text-3xl text-primary-foreground mb-1">
-        {numeric !== undefined ? `${count}${suffix}` : value}
+      {/* Orange top bar — Option A */}
+      <div className="h-1 bg-orange" />
+      <div className="p-6 text-center">
+        {/* Option C — only 50+ is orange, rest stay white */}
+        <div className={`font-heading font-bold text-3xl mb-1 ${featured ? 'text-orange' : 'text-primary-foreground'}`}>
+          {numeric !== undefined ? `${count}${suffix}` : value}
+        </div>
+        <div className="text-sm text-primary-foreground/70 font-semibold">{label}</div>
       </div>
-      <div className="text-sm text-primary-foreground/70 font-semibold">{label}</div>
     </div>
   );
 };
 
 const stats: StatCardProps[] = [
-  { value: '50+', label: 'Years in Business', numeric: 50, suffix: '+' },
+  { value: '50+', label: 'Years in Business', numeric: 50, suffix: '+', featured: true },
   { value: 'Licensed', label: 'Bonded & Insured' },
   { value: 'All Types', label: 'Residential + Commercial' },
   { value: 'Free', label: 'Estimates Always' },
@@ -60,7 +70,8 @@ const WhyChooseUs = () => (
                 key={badge}
                 className="bg-white text-primary px-4 py-2 rounded-md text-sm font-heading font-semibold flex items-center gap-2 shadow-sm"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                {/* Option E — orange checkmark */}
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(24,86%,41%)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
                 {badge}
               </span>
             ))}
@@ -69,7 +80,7 @@ const WhyChooseUs = () => (
 
         <div className="grid grid-cols-2 gap-4">
           {stats.map((s) => (
-            <StatCard key={s.label} value={s.value} label={s.label} numeric={s.numeric} suffix={s.suffix} />
+            <StatCard key={s.label} value={s.value} label={s.label} numeric={s.numeric} suffix={s.suffix} featured={s.featured} />
           ))}
         </div>
       </div>
