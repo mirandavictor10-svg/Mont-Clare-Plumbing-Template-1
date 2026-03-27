@@ -10,14 +10,12 @@ const PipeIcon = () => (
 );
 
 const Logo = ({ light = false }: { light?: boolean }) => (
-  <a href="#top" className="flex items-center gap-2">
-    <PipeIcon />
-    <div className="leading-tight">
-      <span className={`font-heading font-bold text-lg ${light ? 'text-primary-foreground' : 'text-primary'}`}>
-        ZUNIGA'S
-      </span>{' '}
-      <span className="font-heading font-semibold text-lg text-orange">PLUMBING INC.</span>
-    </div>
+  <a href="#top" className="flex items-center gap-0">
+    <img 
+      src={light ? "/logo_light.svg" : "/logo.svg"} 
+      alt="Zuniga's Plumbing, Inc." 
+      className="h-10 md:h-12 w-auto object-contain"
+    />
   </a>
 );
 

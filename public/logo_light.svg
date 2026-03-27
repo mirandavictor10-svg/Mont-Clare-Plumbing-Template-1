@@ -1,0 +1,46 @@
+<svg width="600" height="180" viewBox="0 0 600 180" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="flameGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFEB3B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF9800;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Pipe Icon (Stylized C/Z fit) -->
+  <g transform="translate(30, 20)">
+    <path d="M 50 140 
+             C 10 140, 0 100, 0 70 
+             C 0 30, 20 0, 80 0 
+             L 100 0 
+             L 100 30 
+             L 70 30 
+             C 40 30, 30 50, 30 70 
+             C 30 90, 40 110, 70 110 
+             L 110 110 
+             L 110 140 
+             Z" 
+          fill="#FFFFFF" />
+    
+    <rect x="75" y="-5" width="30" height="40" rx="4" fill="#FFFFFF" />
+    
+    <path d="M 60 40
+             C 45 60, 45 90, 65 110
+             C 95 130, 130 110, 130 80
+             C 130 50, 100 30, 80 20
+             C 70 15, 65 25, 60 40 Z" 
+          fill="url(#flameGrad)" />
+    
+    <path d="M 75 60
+             C 70 75, 75 90, 85 100
+             C 100 110, 115 100, 115 80
+             C 115 65, 100 55, 90 50
+             C 85 48, 80 52, 75 60 Z" 
+          fill="#FFFFFF" opacity="0.3" />
+  </g>
+
+  <g transform="translate(190, 65)">
+    <text x="0" y="25" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="58" fill="#FFFFFF" letter-spacing="-1.5">ZUNIGA'S</text>
+    <text x="0" y="78" font-family="Montserrat, Arial, sans-serif" font-weight="700" font-size="38" fill="#FFFFFF" letter-spacing="0.5">PLUMBING, INC.</text>
+    <text x="4" y="108" font-family="Montserrat, Arial, sans-serif" font-weight="800" font-size="20" fill="#FF8C00" letter-spacing="2.5">WATER &amp; SEWER CONTRACTOR</text>
+  </g>
+</svg>
