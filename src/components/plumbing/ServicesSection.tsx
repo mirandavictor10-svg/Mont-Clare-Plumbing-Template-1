@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import emergencyImg from '@/assets/services/emergency.jpg';
 import sewerImg from '@/assets/services/sewer-drain.jpg';
@@ -157,19 +158,26 @@ const ServicesSection = () => {
   return (
     <section id="services" className="py-16 md:py-24 bg-background">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-2">
-            Our Plumbing Services
+        {/* Section header */}
+        <motion.div
+          className="text-center mb-14"
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="text-orange text-xs font-semibold uppercase tracking-widest mb-3">What We Do</div>
+          <h2 className="font-heading font-black text-4xl md:text-5xl text-foreground tracking-tight mb-4">
+            Full-Service Plumbing
           </h2>
-          <div className="w-16 h-1 bg-orange mx-auto mb-4" />
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Full-service residential, commercial, and industrial plumbing across Chicago
+          <p className="text-muted-foreground text-base max-w-xl mx-auto leading-relaxed">
+            Residential, commercial, and industrial plumbing across Chicago and suburbs — done right the first time.
           </p>
-        </div>
+        </motion.div>
 
         {serviceGroups.map((group, groupIdx) => (
           <div key={group.title} className="mb-16">
-            <div className="relative rounded-xl overflow-hidden mb-6 h-48 md:h-56">
+            <div className="relative rounded-2xl overflow-hidden mb-6 h-44 md:h-52">
               <img
                 src={group.bannerImage}
                 alt={group.bannerAlt}
@@ -194,17 +202,18 @@ const ServicesSection = () => {
                 <button
                   key={s.name}
                   onClick={() => setSelectedService(s)}
-                  className="service-card group bg-card border border-border rounded-lg p-5 hover:bg-primary hover:border-primary transition-all duration-300 cursor-pointer text-left"
+                  className="service-card group bg-card border border-border/60 rounded-2xl p-6 hover:border-orange/30 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 transition-all duration-300 cursor-pointer text-left"
                 >
                   <div className="text-2xl mb-2">{s.icon}</div>
-                  <h4 className="font-heading font-bold text-foreground group-hover:text-primary-foreground transition-colors mb-1">
+                  <h4 className="font-heading font-bold text-foreground group-hover:text-primary transition-colors mb-2 text-sm leading-snug">
                     {s.name}
                   </h4>
-                  <p className="text-sm text-muted-foreground group-hover:text-primary-foreground/80 transition-colors">
+                  <p className="text-xs text-muted-foreground group-hover:text-muted-foreground transition-colors leading-relaxed">
                     {s.desc}
                   </p>
-                  <span className="inline-block mt-3 text-xs font-heading font-semibold text-accent group-hover:text-primary-foreground/90 transition-colors">
-                    Learn more →
+                  <span className="inline-flex items-center gap-1 mt-3 text-xs font-heading font-semibold text-orange group-hover:text-orange transition-colors">
+                    Learn more
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                   </span>
                 </button>
               ))}
@@ -212,12 +221,14 @@ const ServicesSection = () => {
           </div>
         ))}
 
-        <div className="text-center mt-8 p-6 bg-secondary rounded-lg">
-          <p className="text-lg font-heading font-semibold text-foreground mb-2">
-            Not sure what you need? Call us for a FREE estimate
+        <div className="text-center mt-10 p-8 bg-secondary rounded-2xl border border-border/50">
+          <p className="text-base font-heading font-semibold text-foreground mb-2">
+            Not sure what you need?
           </p>
-          <a href="tel:7736192730" className="text-orange font-heading font-bold text-2xl hover:underline">
-            → (773) 619-2730
+          <p className="text-muted-foreground text-sm mb-4">Call us for a free, no-pressure estimate.</p>
+          <a href="tel:7736192730" className="inline-flex items-center gap-2 bg-orange text-white font-heading font-bold text-sm uppercase px-6 py-3 rounded-lg hover:brightness-110 transition-all shadow-md shadow-orange/20">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            (773) 619-2730 — Call Now
           </a>
         </div>
       </div>

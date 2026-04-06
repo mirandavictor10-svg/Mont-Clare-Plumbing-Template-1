@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -51,12 +51,15 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Inter', -apple-system, sans-serif;
     font-size: 16px;
     line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', sans-serif;
+    letter-spacing: -0.02em;
   }
   html {
     scroll-behavior: smooth;
@@ -66,9 +69,25 @@
 @layer utilities {
   .font-heading {
     font-family: 'Poppins', sans-serif;
+    letter-spacing: -0.025em;
   }
   .font-body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Inter', -apple-system, sans-serif;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .glass {
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .glass-dark {
+    background: rgba(10,37,64,0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
   }
 }
 
@@ -96,15 +115,35 @@
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
-/* ── Fade-in-up (hero h1 already uses this) ── */
+/* ── Fade-in-up — expo easing ── */
 @keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0; transform: translateY(32px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fade-in-up {
   opacity: 0;
-  animation: fade-in-up 0.65s ease-out forwards;
+  animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── Fade-in scale ── */
+@keyframes fade-in-scale {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-fade-in-scale {
+  opacity: 0;
+  animation: fade-in-scale 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── Slide in from left ── */
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-32px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.animate-slide-in-left {
+  opacity: 0;
+  animation: slide-in-left 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* ── Stagger delay utilities for hero entrance ── */
