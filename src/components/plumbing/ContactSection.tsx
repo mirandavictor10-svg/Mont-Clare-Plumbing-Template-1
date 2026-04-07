@@ -48,7 +48,6 @@ const ContactSection = () => {
         <div className="w-16 h-1 bg-orange mx-auto mb-12" />
 
         <div className="grid md:grid-cols-2 gap-10">
-          {/* Form */}
           <div>
             {submitted ? (
               <div className="bg-green-50 border border-green-300 text-green-800 rounded-lg p-8 text-center">
@@ -91,33 +90,42 @@ const ContactSection = () => {
                 >
                   Send My Request →
                 </button>
-                <p className="text-center text-sm text-muted-foreground">🔒 Secure Form</p>
+                <p className="text-center text-sm text-muted-foreground">Secure form</p>
               </form>
             )}
           </div>
 
-          {/* Contact info card */}
           <div className="bg-primary rounded-xl p-8 text-primary-foreground">
             <h3 className="font-heading font-bold text-2xl mb-6">Contact Us Directly</h3>
             <div className="space-y-5">
               <div>
-                <div className="text-sm text-primary-foreground/60 mb-1">📞 Phone</div>
+                <div className="text-sm text-primary-foreground/60 mb-1">Phone</div>
                 <a href={`tel:${company.phoneRaw}`} className="text-2xl font-heading font-bold text-orange hover:underline">
                   {company.phone}
                 </a>
               </div>
+              {company.secondaryPhone && (
+                <div>
+                  <div className="text-sm text-primary-foreground/60 mb-1">{company.secondaryPhoneLabel}</div>
+                  <a href={`tel:${company.secondaryPhoneRaw}`} className="hover:underline text-primary-foreground">
+                    {company.secondaryPhone}
+                  </a>
+                </div>
+              )}
+              {company.email && (
+                <div>
+                  <div className="text-sm text-primary-foreground/60 mb-1">Email</div>
+                  <a href={`mailto:${company.email}`} className="hover:underline text-primary-foreground">
+                    {company.email}
+                  </a>
+                </div>
+              )}
               <div>
-                <div className="text-sm text-primary-foreground/60 mb-1">📧 Email</div>
-                <a href={`mailto:${company.email}`} className="hover:underline text-primary-foreground">
-                  {company.email}
-                </a>
-              </div>
-              <div>
-                <div className="text-sm text-primary-foreground/60 mb-1">📍 Address</div>
+                <div className="text-sm text-primary-foreground/60 mb-1">Address</div>
                 <p>{company.address.full}</p>
               </div>
               <div>
-                <div className="text-sm text-primary-foreground/60 mb-1">🕐 Hours</div>
+                <div className="text-sm text-primary-foreground/60 mb-1">Hours</div>
                 <p>{company.hours}</p>
               </div>
 
@@ -125,7 +133,7 @@ const ContactSection = () => {
                 <p className="font-heading font-bold text-xl text-orange mb-1">
                   Emergency? Call any time.
                 </p>
-                <p className="text-sm text-primary-foreground/70">Licensed | Bonded | Insured</p>
+                <p className="text-sm text-primary-foreground/70">Licensed | Bonded | Insured | {company.licenseNumber}</p>
               </div>
             </div>
           </div>

@@ -1,178 +1,83 @@
-import { motion } from 'framer-motion';
 import { useCountUp } from '@/hooks/useCountUp';
 import { company } from '@/config/company.config';
 
-interface StatRailItem {
+interface StatCardProps {
   value: string;
   label: string;
   numeric?: number;
   suffix?: string;
+  featured?: boolean;
 }
 
-const StatNumber = ({ value, label, numeric, suffix = '' }: StatRailItem) => {
-  const { count, ref } = useCountUp({ target: numeric ?? 0, duration: 1800 });
+const StatCard = ({ value, label, numeric, suffix = '', featured = false }: StatCardProps) => {
+  const { count, ref } = useCountUp({ target: numeric ?? 0, duration: 1600 });
 
   return (
-    <div ref={ref} className="text-center px-8 py-2 border-r border-primary-foreground/10 last:border-r-0">
-      <div className="font-heading font-black text-5xl md:text-6xl text-primary-foreground tracking-tight leading-none mb-2">
-        {numeric !== undefined ? (
-          <>
-            <span className="text-orange">{count}</span>
-            <span className="text-orange">{suffix}</span>
-          </>
-        ) : (
-          <span className="text-orange">{value}</span>
-        )}
+    <div
+      ref={ref}
+      className={`rounded-lg overflow-hidden shadow-md transition-colors duration-300 border ${
+        featured
+          ? 'bg-white/20 border-white/30 hover:bg-white/25'
+          : 'bg-white/10 border-white/20 hover:bg-white/15'
+      }`}
+    >
+      <div className="h-1 bg-orange" />
+      <div className="p-6 text-center">
+        <div className={`font-heading font-bold text-3xl mb-1 ${featured ? 'text-orange' : 'text-primary-foreground'}`}>
+          {numeric !== undefined ? `${count}${suffix}` : value}
+        </div>
+        <div className="text-sm text-primary-foreground/70 font-semibold">{label}</div>
       </div>
-      <div className="text-primary-foreground/55 text-xs font-semibold uppercase tracking-widest">{label}</div>
     </div>
   );
 };
 
-const stats: StatRailItem[] = [
-  { value: `${company.yearsInBusiness}+`, label: `Years in ${company.city}`, numeric: company.yearsInBusiness, suffix: '+' },
-  { value: 'A+', label: 'BBB Rating' },
-  { value: '200+', label: 'Five-Star Reviews', numeric: 200, suffix: '+' },
+const stats: StatCardProps[] = [
+  { value: `${company.yearsInBusiness}+`, label: 'Years in Business', numeric: company.yearsInBusiness, suffix: '+' },
+  { value: 'Licensed', label: 'Bonded & Insured' },
+  { value: 'All Types', label: 'Residential + Commercial' },
   { value: 'Free', label: 'Estimates Always' },
 ];
 
-const trustItems = [
-  {
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="hsl(24,86%,41%)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-        <polyline points="9 12 11 14 15 10"/>
-      </svg>
-    ),
-    title: 'Licensed & Bonded',
-    text: 'City of Chicago License: 058170465 · Illinois State License: 055031744',
-  },
-  {
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="hsl(24,86%,41%)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-      </svg>
-    ),
-    title: 'Same-Day Service',
-    text: 'Trucks stocked daily. Most jobs completed in a single visit.',
-  },
-  {
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="hsl(24,86%,41%)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-      </svg>
-    ),
-    title: 'Honest Pricing',
-    text: 'Free quotes, no hidden fees, no surprise charges.',
-  },
-  {
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="hsl(24,86%,41%)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
-      </svg>
-    ),
-    title: 'Owner-Operated',
-    text: `${company.founderName} personally oversees every job — every time.`,
-  },
-];
-
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } },
-};
-
 const WhyChooseUs = () => (
-  <section id="about" className="py-20 md:py-28 bg-primary overflow-hidden">
-    <div className="max-w-6xl mx-auto px-6">
-      {/* Section header */}
-      <motion.div
-        className="mb-16"
-        initial={{ opacity: 0, y: 32 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <div className="text-orange text-xs font-semibold uppercase tracking-widest mb-4">Why {company.shortName}</div>
-        <h2 className="font-heading font-black text-4xl md:text-5xl text-primary-foreground tracking-tight leading-tight max-w-lg">
-          Built on {company.yearsInBusiness} Years<br />of {company.city} Trust.
-        </h2>
-      </motion.div>
+  <section id="about" className="py-16 md:py-24 bg-primary">
+    <div className="max-w-7xl mx-auto px-4">
+      <h2 className="font-heading font-bold text-3xl md:text-4xl text-primary-foreground text-center mb-2">
+        {company.about.heading}
+      </h2>
+      <div className="mb-12" />
 
-      {/* Two-column layout */}
-      <div className="grid md:grid-cols-2 gap-16 md:gap-20 items-start">
-        {/* Left — editorial copy */}
-        <motion.div
-          initial={{ opacity: 0, x: -32 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-        >
-          {/* Pull quote */}
-          <blockquote className="text-2xl md:text-3xl font-heading font-bold text-primary-foreground/90 italic leading-snug mb-8 border-l-2 border-orange pl-6">
-            "Not because of marketing —<br />because of results."
-          </blockquote>
-          <p className="text-primary-foreground/65 text-base leading-relaxed mb-6">
+      <div className="grid md:grid-cols-2 gap-12 items-start">
+        <div className="space-y-6">
+          <p className="text-primary-foreground/85 text-lg leading-relaxed">
             {company.about.paragraph1}
           </p>
-          <p className="text-primary-foreground/65 text-base leading-relaxed mb-8">
+          <p className="text-primary-foreground/85 text-lg leading-relaxed">
             {company.about.paragraph2}
           </p>
-          <div className="flex flex-wrap gap-3">
+          <p className="text-primary-foreground/85 text-lg leading-relaxed">
+            {company.about.paragraph3}
+          </p>
+
+          <div className="flex flex-wrap gap-3 pt-4">
             {company.about.credentials.map((badge) => (
               <span
                 key={badge}
-                className="bg-primary-foreground/10 text-primary-foreground text-xs px-4 py-2 rounded-lg font-semibold border border-primary-foreground/15 flex items-center gap-2"
+                className="bg-white text-primary px-4 py-2 rounded-md text-sm font-heading font-semibold flex items-center gap-2 shadow-sm"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="hsl(24,86%,41%)" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="hsl(24,86%,41%)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
                 {badge}
               </span>
             ))}
           </div>
-        </motion.div>
+        </div>
 
-        {/* Right — trust items */}
-        <motion.div
-          className="space-y-1"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {trustItems.map((item) => (
-            <motion.div
-              key={item.title}
-              variants={itemVariants}
-              className="flex gap-4 items-start p-5 rounded-xl hover:bg-primary-foreground/5 transition-colors duration-200 group"
-            >
-              <div className="w-10 h-10 bg-primary-foreground/8 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-orange/15 transition-colors duration-200">
-                {item.icon}
-              </div>
-              <div>
-                <div className="font-heading font-semibold text-primary-foreground text-sm mb-1">{item.title}</div>
-                <div className="text-primary-foreground/50 text-xs leading-relaxed">{item.text}</div>
-              </div>
-            </motion.div>
+        <div className="grid grid-cols-2 gap-4">
+          {stats.map((s) => (
+            <StatCard key={s.label} value={s.value} label={s.label} numeric={s.numeric} suffix={s.suffix} featured={s.featured} />
           ))}
-        </motion.div>
+        </div>
       </div>
-
-      {/* Stat rail */}
-      <motion.div
-        className="mt-20 pt-10 border-t border-primary-foreground/10 grid grid-cols-2 md:grid-cols-4"
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      >
-        {stats.map((s) => (
-          <StatNumber key={s.label} {...s} />
-        ))}
-      </motion.div>
     </div>
   </section>
 );

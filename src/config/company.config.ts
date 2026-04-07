@@ -4,123 +4,182 @@
 // ============================================================
 
 export const company = {
+  name: "Nuzzo Sewer & Plumbing",
+  shortName: "Nuzzo Plumbing",
+  founderName: "Len Nuzzo",
+  yearsInBusiness: 78,
+  city: "Chicago",
 
-  // ── Basic Info ────────────────────────────────────────────
-  name: "Zuniga's Plumbing, Inc.",
-  shortName: "Zuniga's Plumbing",        // Used in shorter contexts
-  founderName: "Walter Zuniga",
-  yearsInBusiness: 50,                   // Numeric — drives the counter animation
-  city: "Chicago",                       // Primary city name used in headings/copy
-
-  // ── Contact ───────────────────────────────────────────────
-  phone: "(773) 619-2730",               // Display format
-  phoneRaw: "7736192730",                // For tel: links — digits only, no formatting
-  email: "zunigaplumbing@yahoo.com",
+  phone: "(773) 625-6280",
+  phoneRaw: "7736256280",
+  secondaryPhone: "(708) 456-7300",
+  secondaryPhoneRaw: "7084567300",
+  secondaryPhoneLabel: "Suburban Line",
+  email: "",
   address: {
-    street: "7253 S. Green St",
+    street: "8619 W Leland Ave",
     city: "Chicago",
     state: "IL",
-    zip: "60621",
-    full: "7253 S. Green St, Chicago, IL 60621",
-    mapsQuery: "7253+S.+Green+St,+Chicago,+IL+60621",  // URL-encoded for Google Maps embed
+    zip: "60656",
+    full: "8619 W Leland Ave, Chicago, IL 60656",
+    mapsQuery: "8619+W+Leland+Ave,+Chicago,+IL+60656",
   },
-  hours: "Mon–Fri: 8:00 AM – 5:00 PM",
+  hours: "Emergency service available. Call for appointment scheduling.",
+  licenseNumber: "PC# 14636",
 
-  // ── Colors (optional — leave as-is to keep navy + orange) ─
-  // Values are HSL: "hue saturation% lightness%"
   colors: {
-    primary: "217 62% 26%",    // Navy blue
-    primaryDark: "220 68% 17%", // Darker navy for footer
-    accent: "24 86% 41%",      // Orange
+    primary: "217 62% 26%",
+    primaryDark: "220 68% 17%",
+    accent: "24 86% 41%",
   },
 
-  // ── SEO / Meta Tags ───────────────────────────────────────
   meta: {
-    title: "Zuniga's Plumbing, Inc. | Professional Chicago Plumbers",
+    title: "Nuzzo Sewer & Plumbing | Chicago Plumbing & Sewer Service Since 1948",
     description:
-      "Expert plumbing, water, and sewer contractor services in Chicago. Serving the community for over 50 years with trusted, professional care.",
+      "Family-owned plumbing, sewer, flood-control, and remodeling service in Chicago and the northwest suburbs. Free estimates, licensed work, and emergency availability.",
   },
 
-  // ── Hero Section ──────────────────────────────────────────
   hero: {
-    headline: "Chicago's Trusted Plumbers — Over 50 Years of Reliable Service",
+    headline: "Burst Pipe? Sewer Backup? Nuzzo Gets Chicago Flowing Again Fast.",
     subtext:
-      "Licensed, Bonded & Insured. Serving Residential, Commercial & Industrial Clients Across Chicago and Suburbs.",
+      "Family-owned since 1948. Licensed, bonded, and insured plumbing, sewer, flood-control, and remodeling service for Chicago homes, businesses, and industrial buildings.",
     badges: [
-      "Licensed & Insured",
-      "50+ Years Experience",
-      "Residential & Commercial",
+      "Serving Chicago Since 1948",
+      "Licensed, Bonded & Insured",
       "Free Estimates",
+      "Same-Day Service Available",
     ],
   },
 
-  // ── About / Why Choose Us ─────────────────────────────────
   about: {
-    heading: "Why Chicago Trusts Zuniga's Plumbing",
+    heading: "Why Chicago Calls Nuzzo First",
     paragraph1:
-      "Founded and led by Walter Zuniga, Zuniga's Plumbing Inc. has been serving Chicago homeowners, businesses, and industrial clients for over 50 years. We're not a call center — we're your neighbors.",
+      "Started by Leo Nuzzo in 1948 and now operated by Len Nuzzo, Nuzzo Sewer & Plumbing brings three generations of local plumbing experience to every call. We are family-owned, neighborhood-based, and trusted across Chicago and the northwest suburbs.",
     paragraph2:
-      "Whether it's a kitchen remodel, a burst pipe at 2am, or a full commercial sewer line replacement, our licensed team shows up on time, explains every step, and delivers work that passes city inspection the first time.",
+      "From clogged drains and sewer repairs to flood control, water lines, and remodeling work, our licensed team handles the tough jobs with honest recommendations, clean workmanship, and dependable follow-through.",
     paragraph3:
-      "We serve the entire Chicago area and surrounding suburbs — residential, commercial, industrial, and high-rise properties.",
-    credentials: ["BBB Accredited", "Yelp Verified", "Angi Certified"],
+      "We offer free estimates, emergency availability, and service for residential, commercial, and industrial properties. When you call Nuzzo, you get experienced plumbers who know the area and know how to solve the problem the right way.",
+    credentials: [
+      "Serving Chicago Since 1948",
+      "PC# 14636",
+      "Licensed, Bonded & Insured",
+      "Cross-Connection Certified",
+    ],
   },
 
-  // ── Trust Strip (scrolling badges under the hero) ─────────
   trustBadges: [
-    { label: "Google Rated",    sublabel: "4.8 ★ · 90+ Reviews",     platform: "google" },
-    { label: "BBB Accredited",  sublabel: "A+ Rating",                platform: "bbb"    },
-    { label: "Angi Certified",  sublabel: "Super Service Award",      platform: "angi"   },
-    { label: "24/7 Emergency",  sublabel: "We Respond Fast",          platform: "phone"  },
-    { label: "Yelp Verified",   sublabel: "4.5 ★ · 60+ Reviews",     platform: "yelp"   },
+    { label: "Since 1948", sublabel: "Three Generations of Service", platform: "bbb" },
+    { label: "Yelp Rated", sublabel: "4.5 ★ · 28 Reviews", platform: "yelp" },
+    { label: "Licensed", sublabel: "PC# 14636", platform: "bbb" },
+    { label: "Emergency Service", sublabel: "Same-Day Appointments Available", platform: "phone" },
   ],
 
-  // ── Reviews / Testimonials ────────────────────────────────
   reviews: [
     {
-      text: "Walter and his team were amazing for our kitchen remodel. They handled everything from planning to code compliance flawlessly. Best plumbers I've worked with!",
-      source: "Verified Customer, Angi",
+      text: "Len and his assistant came out right away and were helpful, careful, quick, and efficient.",
+      source: "Sarah C. • Nuzzo Plumbing site",
     },
     {
-      text: "Walter came out to check a potential issue I had and he was prompt, patient and extremely knowledgeable. Highly recommend for any plumbing needs.",
-      source: "Verified Yelp Review",
+      text: "These are my guys. Reliable and reasonable.",
+      source: "Jake Elkins-Ryan • Nuzzo Plumbing site",
     },
     {
-      text: "Sal, Jamie and Juan did a terrific job repairing three broken pipes and installing a new toilet. Super professional and efficient team.",
-      source: "Verified Yelp Review",
+      text: "Very dependable, fair, and trustworthy. I have called Nuzzo several times and would absolutely recommend them.",
+      source: "Matt Lane • Nuzzo Plumbing site",
     },
     {
-      text: "Walter values customer satisfaction higher than any contractor I have worked with. He stayed on-site to ensure everything went perfectly. A true professional.",
-      source: "Verified Customer, Angi",
+      text: "Len showed up quickly, solved a problem that two other plumbers quoted far higher, and fixed it in under an hour.",
+      source: "Mark C. • Yahoo local listing",
     },
     {
-      text: "Zuniga's Plumbing will always get my business. They arrived right on time and were very professional during the entire repair process.",
-      source: "BBB Review",
-    },
-    {
-      text: "They showed up on time and did the work quickly. Explained what was going on and showed me the results before finishing. Very transparent service.",
-      source: "Verified Customer, Angi",
+      text: "They have handled several repairs for us and have always been prompt and honest in their dealings.",
+      source: "John M. • Yahoo local listing",
     },
   ],
+  reviewSummary:
+    "Customer-backed plumbing, sewer, and flood-control service across Chicago and the northwest suburbs.",
 
-  // ── Service Areas ─────────────────────────────────────────
   serviceArea: {
-    heading: "Serving Chicago & Surrounding Suburbs",
+    heading: "Serving Chicago & the Northwest Suburbs",
     subtext:
-      "From the heart of Chicago to Cook County suburbs — we're your local, licensed plumbing experts.",
+      "Dispatching from Chicago to Elmwood Park, Oak Park, Park Ridge, Niles, Des Plaines, River Grove, River Forest, Rosemont, Schiller Park, and nearby communities.",
     areas: [
-      "Chicago (all neighborhoods)",
-      "Bridgeport, Pilsen, Back of the Yards",
-      "South Shore, Hyde Park, Englewood",
-      "Oak Lawn, Evergreen Park",
-      "Cicero, Berwyn",
-      "Calumet City, Harvey, Dolton",
-      "Blue Island",
-      "Suburbs throughout Cook County",
+      "Chicago",
+      "Elmwood Park",
+      "Des Plaines",
+      "Forest Park",
+      "Harwood Heights",
+      "Morton Grove",
+      "Niles",
+      "Norridge",
+      "Oak Park",
+      "Park Ridge",
+      "River Forest",
+      "River Grove",
+      "Rosemont",
+      "Schiller Park",
     ],
   },
 
-  // ── Footer tagline ────────────────────────────────────────
-  footerTagline: "Chicago's Trusted Plumbing Experts — Serving the City for Over 50 Years",
+  howItWorks: [
+    {
+      title: "Call the Right Line",
+      description:
+        "Use our Chicago line or suburban line and tell us what is happening. We will confirm the service area, talk through the problem, and line up the right next step.",
+    },
+    {
+      title: "Get a Free Estimate",
+      description:
+        "For repairs, sewer issues, flood-control work, or remodeling projects, we give you a clear recommendation and a no-pressure estimate before work begins.",
+    },
+    {
+      title: "Licensed Work Done Right",
+      description:
+        "Our crew handles the repair or installation with licensed workmanship, clean jobsite habits, and the experience to get the job finished properly the first time.",
+    },
+  ],
 
+  faq: [
+    {
+      q: "Do you offer free estimates?",
+      a: "Yes. Nuzzo Sewer & Plumbing offers free estimates. Call either office line and we will help you schedule the right visit for your job.",
+    },
+    {
+      q: "Do you handle emergency plumbing calls?",
+      a: "Yes. The company states emergency service is available for urgent plumbing, sewer, and flooding issues.",
+    },
+    {
+      q: "What services do you specialize in?",
+      a: "Nuzzo handles plumbing installations and repairs, sewer repairs, power rodding, video inspections, flood control, sump and ejector pumps, water lines, and kitchen and bathroom remodeling plumbing.",
+    },
+    {
+      q: "Are you licensed, bonded, and insured?",
+      a: "Yes. Nuzzo Sewer & Plumbing lists the business as licensed, bonded, and insured and publishes license number PC# 14636.",
+    },
+    {
+      q: "What areas do you serve?",
+      a: "The company serves Chicago plus nearby suburbs including Des Plaines, Elmwood Park, Forest Park, Harwood Heights, Morton Grove, Niles, Norridge, Oak Park, Park Ridge, River Forest, River Grove, Rosemont, and Schiller Park.",
+    },
+    {
+      q: "Do you work on residential and commercial properties?",
+      a: "Yes. Nuzzo markets service for homes, businesses, and industrial buildings across Chicago and the surrounding suburbs.",
+    },
+  ],
+
+  footerTagline:
+    "Family-owned plumbing, sewer, flood-control, and remodeling service for Chicago and the northwest suburbs since 1948.",
+  footerCopyright: "2026",
+
+  schemaServices: [
+    "Plumbing repairs",
+    "Drain cleaning",
+    "Power rodding",
+    "Sewer repairs",
+    "Video sewer inspection",
+    "Flood control",
+    "Sump pumps",
+    "Water lines",
+    "Kitchen remodeling plumbing",
+    "Bathroom remodeling plumbing",
+  ],
 };

@@ -19,12 +19,11 @@ const Testimonials = () => {
             What {company.city} Says
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Trusted by hundreds of {company.city} homeowners. Five-star service, guaranteed.
+            {company.reviewSummary}
           </p>
         </div>
       </div>
 
-      {/* Infinite Marquee Container */}
       <div className="relative flex flex-col gap-8 max-w-full">
         <div className="flex overflow-hidden border-y border-border/50 bg-card/30 py-16">
           <motion.div 
@@ -55,7 +54,7 @@ const Testimonials = () => {
                 <div className="flex items-center justify-between pt-8 mt-8 border-t border-border/50">
                   <div className="flex items-center gap-4">
                     <div className="bg-orange/10 size-12 rounded-2xl flex items-center justify-center text-orange font-bold text-lg">
-                      {review.source.includes('Angi') ? 'A' : review.source.includes('Yelp') ? 'Y' : 'B'}
+                      {review.source.includes('Yelp') ? 'Y' : review.source.includes('Yahoo') ? 'Y' : 'N'}
                     </div>
                     <div>
                       <h5 className="font-bold text-sm leading-tight text-foreground uppercase tracking-wider">Verified Review</h5>
@@ -71,10 +70,7 @@ const Testimonials = () => {
 
       <div className="text-center mt-16 px-4">
         <p className="text-muted-foreground max-w-lg mx-auto leading-relaxed">
-          Read more reviews on{' '}
-          <span className="font-semibold text-foreground">Google</span>,{' '}
-          <span className="font-semibold text-foreground">Yelp</span> &{' '}
-          <span className="font-semibold text-foreground">Angi</span>
+          Read the latest customer feedback on the Nuzzo site and across local review platforms before you book.
         </p>
       </div>
     </section>

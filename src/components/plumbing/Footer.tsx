@@ -6,6 +6,7 @@ const quickLinks = [
   { label: 'Services', href: '#services' },
   { label: 'About', href: '#about' },
   { label: 'Reviews', href: '#reviews' },
+  { label: 'FAQ', href: '#faq' },
   { label: 'Contact', href: '#contact' },
   { label: 'Free Estimate', href: '#contact' },
 ];
@@ -42,13 +43,17 @@ const Footer = () => (
                 {company.phone}
               </a>
             </p>
-            <p>
-              <a href={`mailto:${company.email}`} className="hover:underline">
-                {company.email}
-              </a>
-            </p>
+            {company.secondaryPhone && <p>{company.secondaryPhoneLabel}: {company.secondaryPhone}</p>}
+            {company.email && (
+              <p>
+                <a href={`mailto:${company.email}`} className="hover:underline">
+                  {company.email}
+                </a>
+              </p>
+            )}
             <p>{company.address.full}</p>
             <p>{company.hours}</p>
+            <p>{company.licenseNumber}</p>
           </div>
         </div>
       </div>
