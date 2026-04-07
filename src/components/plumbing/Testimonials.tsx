@@ -1,32 +1,8 @@
 import { motion } from 'framer-motion';
 import { Star } from 'lucide-react';
+import { company } from '@/config/company.config';
 
-const reviews = [
-  {
-    text: "Walter and his team were amazing for our kitchen remodel. They handled everything from planning to code compliance flawlessly. Best plumbers I've worked with!",
-    source: 'Verified Customer, Angi',
-  },
-  {
-    text: "Walter came out to check a potential issue I had and he was prompt, patient and extremely knowledgeable. Highly recommend for any plumbing needs.",
-    source: 'Verified Yelp Review',
-  },
-  {
-    text: "Sal, Jamie and Juan did a terrific job repairing three broken pipes and installing a new toilet. Super professional and efficient team.",
-    source: 'Verified Yelp Review',
-  },
-  {
-    text: "Walter values customer satisfaction higher than any contractor I have worked with. He stayed on-site to ensure everything went perfectly. A true professional.",
-    source: 'Verified Customer, Angi',
-  },
-  {
-    text: "Zuniga's Plumbing will always get my business. They arrived right on time and were very professional during the entire furnace repair process.",
-    source: 'BBB Review',
-  },
-  {
-    text: "They showed up on time and did the work quickly. Explained what was going on and showed me the results before finishing. Very transparent service.",
-    source: 'Verified Customer, Angi',
-  },
-];
+const reviews = company.reviews;
 
 const Testimonials = () => {
   return (
@@ -40,10 +16,10 @@ const Testimonials = () => {
             <span className="text-[10px] font-bold uppercase tracking-widest text-orange">Verified Excellence</span>
           </div>
           <h2 className="font-heading font-bold text-4xl md:text-6xl text-foreground tracking-tight">
-            What Chicago Says
+            What {company.city} Says
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Trusted by hundreds of Chicago homeowners. Five-star service, guaranteed.
+            Trusted by hundreds of {company.city} homeowners. Five-star service, guaranteed.
           </p>
         </div>
       </div>

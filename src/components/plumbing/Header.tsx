@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Logo from './Logo';
+import { company } from '@/config/company.config';
 
 const navLinks = [
   { label: 'Home', href: '#home' },
@@ -71,11 +72,11 @@ const Header = () => {
 
         {/* Phone + CTA */}
         <div className="hidden md:flex items-center gap-4">
-          <a href="tel:7736192730" className="text-orange font-heading font-bold text-base tracking-tight">
-            (773) 619-2730
+          <a href={`tel:${company.phoneRaw}`} className="text-orange font-heading font-bold text-base tracking-tight">
+            {company.phone}
           </a>
           <a
-            href="tel:7736192730"
+            href={`tel:${company.phoneRaw}`}
             className="bg-orange text-white font-heading font-bold text-sm uppercase px-5 py-2.5 rounded-lg hover:brightness-110 transition-all duration-200 shadow-md shadow-orange/20"
           >
             Call Now
@@ -120,11 +121,11 @@ const Header = () => {
             ))}
             <div className="px-6 pt-3">
               <a
-                href="tel:7736192730"
+                href={`tel:${company.phoneRaw}`}
                 className="flex items-center justify-center gap-2 bg-orange text-white text-center font-heading font-bold uppercase py-3 rounded-lg shadow-md"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                Call (773) 619-2730
+                Call {company.phone}
               </a>
             </div>
           </motion.nav>

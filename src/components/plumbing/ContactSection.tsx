@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react';
+import { company } from '@/config/company.config';
 
 const allServices = [
   'Gas Leak Detection & Repair', 'Frozen Pipe Repair', 'Emergency Plumbing',
@@ -101,23 +102,23 @@ const ContactSection = () => {
             <div className="space-y-5">
               <div>
                 <div className="text-sm text-primary-foreground/60 mb-1">📞 Phone</div>
-                <a href="tel:7736192730" className="text-2xl font-heading font-bold text-orange hover:underline">
-                  (773) 619-2730
+                <a href={`tel:${company.phoneRaw}`} className="text-2xl font-heading font-bold text-orange hover:underline">
+                  {company.phone}
                 </a>
               </div>
               <div>
                 <div className="text-sm text-primary-foreground/60 mb-1">📧 Email</div>
-                <a href="mailto:zunigaplumbing@yahoo.com" className="hover:underline text-primary-foreground">
-                  zunigaplumbing@yahoo.com
+                <a href={`mailto:${company.email}`} className="hover:underline text-primary-foreground">
+                  {company.email}
                 </a>
               </div>
               <div>
                 <div className="text-sm text-primary-foreground/60 mb-1">📍 Address</div>
-                <p>7253 S. Green St, Chicago, IL 60621</p>
+                <p>{company.address.full}</p>
               </div>
               <div>
                 <div className="text-sm text-primary-foreground/60 mb-1">🕐 Hours</div>
-                <p>Mon–Fri: 8:00 AM – 5:00 PM</p>
+                <p>{company.hours}</p>
               </div>
 
               <div className="border-t border-primary-foreground/20 pt-5 mt-5">

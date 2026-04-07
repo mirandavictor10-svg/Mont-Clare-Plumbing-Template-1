@@ -1,13 +1,6 @@
-const areas = [
-  'Chicago (all neighborhoods)',
-  'Bridgeport, Pilsen, Back of the Yards',
-  'South Shore, Hyde Park, Englewood',
-  'Oak Lawn, Evergreen Park',
-  'Cicero, Berwyn',
-  'Calumet City, Harvey, Dolton',
-  'Blue Island',
-  'Suburbs throughout Cook County',
-];
+import { company } from '@/config/company.config';
+
+const { areas, heading: areaHeading, subtext: areaSubtext } = company.serviceArea;
 
 const ServiceArea = () => (
   <section id="service-area" className="py-16 md:py-24 bg-secondary">
@@ -16,11 +9,11 @@ const ServiceArea = () => (
       {/* Section Header */}
       <div className="text-center mb-12">
         <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground">
-          Serving Chicago & Surrounding Suburbs
+          {areaHeading}
         </h2>
         <div className="w-16 h-1 bg-orange mx-auto mt-3 mb-4" />
         <p className="text-muted-foreground max-w-xl mx-auto text-base">
-          From the heart of Chicago to Cook County suburbs — we're your local, licensed plumbing experts.
+          {areaSubtext}
         </p>
       </div>
 
@@ -44,24 +37,24 @@ const ServiceArea = () => (
             </svg>
             <div>
               <div className="font-heading font-bold text-primary-foreground text-sm leading-tight">
-                Zuniga's Plumbing Inc.
+                {company.name}
               </div>
               <div className="text-primary-foreground/60 text-xs">
-                7253 S. Green St, Chicago, IL 60621
+                {company.address.full}
               </div>
             </div>
           </div>
 
           {/* Google Maps iframe */}
           <iframe
-            src="https://maps.google.com/maps?q=7253+S.+Green+St,+Chicago,+IL+60621&hl=en&z=14&output=embed"
+            src={`https://maps.google.com/maps?q=${company.address.mapsQuery}&hl=en&z=14&output=embed`}
             width="100%"
             height="100%"
             className="flex-1 min-h-[320px]"
             style={{ border: 0, display: 'block' }}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title="Zuniga's Plumbing Inc. location"
+            title={`${company.name} location`}
           />
 
           {/* Orange accent bottom bar */}
@@ -103,7 +96,7 @@ const ServiceArea = () => (
               Give us a call — we'll come to you.
             </p>
             <a
-              href="tel:7736192730"
+              href={`tel:${company.phoneRaw}`}
               className="inline-flex items-center gap-2 bg-orange text-accent-foreground font-heading font-bold px-6 py-3 rounded-md hover:brightness-110 transition text-base animate-pulse-glow"
             >
               <svg
@@ -118,7 +111,7 @@ const ServiceArea = () => (
                   clipRule="evenodd"
                 />
               </svg>
-              (773) 619-2730
+              {company.phone}
             </a>
           </div>
 

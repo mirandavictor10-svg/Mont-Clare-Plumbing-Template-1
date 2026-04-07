@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useCountUp } from '@/hooks/useCountUp';
+import { company } from '@/config/company.config';
 
 interface StatRailItem {
   value: string;
@@ -29,7 +30,7 @@ const StatNumber = ({ value, label, numeric, suffix = '' }: StatRailItem) => {
 };
 
 const stats: StatRailItem[] = [
-  { value: '50+', label: 'Years in Chicago', numeric: 50, suffix: '+' },
+  { value: `${company.yearsInBusiness}+`, label: `Years in ${company.city}`, numeric: company.yearsInBusiness, suffix: '+' },
   { value: 'A+', label: 'BBB Rating' },
   { value: '200+', label: 'Five-Star Reviews', numeric: 200, suffix: '+' },
   { value: 'Free', label: 'Estimates Always' },
@@ -71,7 +72,7 @@ const trustItems = [
       </svg>
     ),
     title: 'Owner-Operated',
-    text: 'Walter Zuniga personally oversees every job — every time.',
+    text: `${company.founderName} personally oversees every job — every time.`,
   },
 ];
 
@@ -96,9 +97,9 @@ const WhyChooseUs = () => (
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="text-orange text-xs font-semibold uppercase tracking-widest mb-4">Why Zuniga's</div>
+        <div className="text-orange text-xs font-semibold uppercase tracking-widest mb-4">Why {company.shortName}</div>
         <h2 className="font-heading font-black text-4xl md:text-5xl text-primary-foreground tracking-tight leading-tight max-w-lg">
-          Built on 50 Years<br />of Chicago Trust.
+          Built on {company.yearsInBusiness} Years<br />of {company.city} Trust.
         </h2>
       </motion.div>
 
@@ -116,13 +117,13 @@ const WhyChooseUs = () => (
             "Not because of marketing —<br />because of results."
           </blockquote>
           <p className="text-primary-foreground/65 text-base leading-relaxed mb-6">
-            Founded and led by Walter Zuniga, we've served Chicago homeowners, businesses, and industrial clients for over five decades. We're not a call center — we're your neighbors.
+            {company.about.paragraph1}
           </p>
           <p className="text-primary-foreground/65 text-base leading-relaxed mb-8">
-            Every job, from a kitchen remodel to a full commercial sewer line replacement, is handled by our licensed team — on time, on budget, and built to pass city inspection the first time.
+            {company.about.paragraph2}
           </p>
           <div className="flex flex-wrap gap-3">
-            {['BBB Accredited', 'Yelp Verified', 'Angi Certified'].map((badge) => (
+            {company.about.credentials.map((badge) => (
               <span
                 key={badge}
                 className="bg-primary-foreground/10 text-primary-foreground text-xs px-4 py-2 rounded-lg font-semibold border border-primary-foreground/15 flex items-center gap-2"

@@ -1,3 +1,5 @@
+import { company } from '@/config/company.config';
+
 const UrgencyBanner = () => (
   <section id="emergency" className="bg-orange py-8 md:py-10">
     <div className="max-w-5xl mx-auto px-4 text-center">
@@ -9,10 +11,10 @@ const UrgencyBanner = () => (
         Gas leaks, burst pipes, frozen pipes — don't wait. Call us now.
       </p>
       <a
-        href="tel:7736192730"
+        href={`tel:${company.phoneRaw}`}
         className="inline-block animate-pulse-glow font-heading font-bold text-3xl md:text-4xl text-accent-foreground hover:underline"
       >
-        (773) 619-2730
+        {company.phone}
       </a>
     </div>
   </section>

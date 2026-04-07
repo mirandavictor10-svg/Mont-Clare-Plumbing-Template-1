@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { company } from '@/config/company.config';
 import { motion } from 'framer-motion';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import emergencyImg from '@/assets/services/emergency.jpg';
@@ -226,9 +227,9 @@ const ServicesSection = () => {
             Not sure what you need?
           </p>
           <p className="text-muted-foreground text-sm mb-4">Call us for a free, no-pressure estimate.</p>
-          <a href="tel:7736192730" className="inline-flex items-center gap-2 bg-orange text-white font-heading font-bold text-sm uppercase px-6 py-3 rounded-lg hover:brightness-110 transition-all shadow-md shadow-orange/20">
+          <a href={`tel:${company.phoneRaw}`} className="inline-flex items-center gap-2 bg-orange text-white font-heading font-bold text-sm uppercase px-6 py-3 rounded-lg hover:brightness-110 transition-all shadow-md shadow-orange/20">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            (773) 619-2730 — Call Now
+            {company.phone} — Call Now
           </a>
         </div>
       </div>
@@ -256,10 +257,10 @@ const ServicesSection = () => {
                 </DialogDescription>
                 <div className="mt-6 flex flex-col sm:flex-row gap-3">
                   <a
-                    href="tel:7736192730"
+                    href={`tel:${company.phoneRaw}`}
                     className="flex-1 inline-flex items-center justify-center gap-2 bg-accent text-accent-foreground font-heading font-bold text-sm py-3 px-4 rounded-md hover:bg-accent/90 transition-colors"
                   >
-                    📞 Call (773) 619-2730
+                    📞 Call {company.phone}
                   </a>
                   <a
                     href="#contact"

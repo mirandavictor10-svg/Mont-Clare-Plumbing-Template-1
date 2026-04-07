@@ -1,3 +1,5 @@
+import { company } from '@/config/company.config';
+
 const PipeIcon = () => (
   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M6 8h8v4H6V8z" fill="currentColor" opacity="0.9"/>
@@ -14,7 +16,7 @@ export const Logo = ({ light = false, className = "" }: { light?: boolean; class
     <div className={`flex items-center gap-2 ${className}`}>
       <img
         src={light ? "/logo_light.png" : "/logo.png"}
-        alt="Zuniga's Plumbing, Inc."
+        alt={`${company.name} logo`}
         className="h-14 md:h-16 w-auto object-contain"
       />
     </div>

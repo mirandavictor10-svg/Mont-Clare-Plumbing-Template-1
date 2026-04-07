@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import heroImage from '@/assets/hero-plumber.jpg';
+import { company } from '@/config/company.config';
 
 const HeroSection = () => {
   const ref = useRef<HTMLElement>(null);
@@ -53,7 +54,7 @@ const HeroSection = () => {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
         >
           <span className="w-1.5 h-1.5 rounded-full bg-orange inline-block animate-pulse" />
-          Serving Chicago Since 1975
+          Serving {company.city} Since 1975
         </motion.div>
 
         {/* Giant headline */}
@@ -63,8 +64,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
         >
-          Chicago's Trusted<br />
-          <span className="text-orange">Plumber.</span>
+          {company.hero.headline}
         </motion.h1>
 
         {/* Subtext */}
@@ -74,7 +74,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
         >
-          Licensed, Bonded &amp; Insured. Over 50 years serving residential, commercial &amp; industrial clients across Chicago and suburbs.
+          {company.hero.subtext}
         </motion.p>
 
         {/* CTAs */}
@@ -85,11 +85,11 @@ const HeroSection = () => {
           transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
         >
           <a
-            href="tel:7736192730"
+            href={`tel:${company.phoneRaw}`}
             className="w-full sm:w-auto bg-orange text-white font-heading font-bold text-base uppercase px-8 py-4 rounded-lg hover:brightness-110 transition-all duration-200 flex items-center justify-center gap-3 shadow-lg shadow-orange/30 animate-pulse-glow"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Call (773) 619-2730
+            Call {company.phone}
           </a>
           <a
             href="#contact"
@@ -106,7 +106,7 @@ const HeroSection = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.7 }}
         >
-          {['Licensed & Insured', '50+ Years Experience', 'Same-Day Service', 'Free Estimates'].map((badge) => (
+          {company.hero.badges.map((badge) => (
             <span
               key={badge}
               className="flex items-center gap-1.5 text-primary-foreground/70 text-xs font-medium"
