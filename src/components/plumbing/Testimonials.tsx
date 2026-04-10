@@ -70,7 +70,7 @@ const Testimonials = () => {
 
       <div className="text-center mt-16 px-4">
         <p className="text-muted-foreground max-w-lg mx-auto leading-relaxed">
-          Read the latest customer feedback on the Nuzzo site and across local review platforms before you book.
+          Read the latest customer feedback on Nextdoor, Thumbtack, and other local review platforms before you book.
         </p>
       </div>
     </section>
