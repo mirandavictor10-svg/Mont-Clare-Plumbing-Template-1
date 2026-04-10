@@ -6,7 +6,7 @@ export const Logo = ({ light = false, className = "" }: { light?: boolean; class
       <img
         src={light ? "/logo_light.png" : "/logo.png"}
         alt={`${company.name} logo`}
-        className="h-16 md:h-20 w-auto object-contain"
+        className="h-32 md:h-40 w-auto object-contain"
       />
     </div>
   );
